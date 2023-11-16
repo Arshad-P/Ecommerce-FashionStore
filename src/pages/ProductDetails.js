@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { CartContext } from '../contexts/CartContext'
 import { ProductContext } from '../contexts/ProductContext'
+// toastify 
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 const ProductDetails = () => {
@@ -24,6 +27,26 @@ const ProductDetails = () => {
   }
   // destructuroing product 
   const {title, price, description, image} = product;
+
+
+  // Toastify Notification 
+
+const toastify4 = ()=>{
+
+  toast.success('Added to Cart Successfully!', {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+    
+}
+
+
 
 
   return (
@@ -51,9 +74,27 @@ const ProductDetails = () => {
         </div>
         <p className='mb-3'>{description}</p>
 
+       <div onClick={toastify4}>
         <button onClick={()=>addToCart(product,product.id)} className='bg-primary py-1 px-4 text-white mr-7'>
             Add to cart
         </button>
+        </div>
+{/* // Toastify notification */}
+        
+<ToastContainer
+position="bottom-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
+
+
       </div>
       </div>
       </div>
